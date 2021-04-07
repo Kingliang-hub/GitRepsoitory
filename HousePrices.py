@@ -26,26 +26,27 @@ df_isnull = df.isnull().any()
 # 删除带空值的列
 # df_new = df.dropna(axis=1)
 # 替换带空值的列为0
-df_new2 = df.fillna(value=0)
-x_vars = df_new2.columns
-for label in df_new2.columns:
-    print(df_new2[label].dtypes)
-    if (df_new2[label].dtypes == 'int64' or df_new2[label].dtypes == 'float64'):
-        print(label)
-    else:
-        label_mapping = {label: idx for idx, label in enumerate(set(df_new2[label]))}
-        df_new2[label] = df_new2[label].map(label_mapping)
+#df_new2 = df.fillna(value=0)
+df_new2=df
+# x_vars = df_new2.columns
+# for label in df_new2.columns:
+#     print(df_new2[label].dtypes)
+#     if (df_new2[label].dtypes == 'int64' or df_new2[label].dtypes == 'float64'):
+#         print(label)
+#     else:
+#         label_mapping = {label: idx for idx, label in enumerate(set(df_new2[label]))}
+#         df_new2[label] = df_new2[label].map(label_mapping)
 
-x_vars=df_new2.columns[1:]
-print(x_vars)
-#分别分析所取的属性与价格的分布关系图
-x_vars=df_new2.columns[2:]
-#分别分析所取的属性与价格的分布关系图
-for x_var in x_vars:
-    #df.plot(kind='scatter',x=str(x_var),y='SalePcrice') #设置绘图的行和列
-    df_new2.plot(kind='scatter',x=x_var,y='SalePrice')
-plt.show()
-print('打印图片成功')
+# x_vars=df_new2.columns[1:]
+# print(x_vars)
+# #分别分析所取的属性与价格的分布关系图
+# x_vars=df_new2.columns[2:]
+# #分别分析所取的属性与价格的分布关系图
+# for x_var in x_vars:
+#     #df.plot(kind='scatter',x=str(x_var),y='SalePcrice') #设置绘图的行和列
+#     df_new2.plot(kind='scatter',x=x_var,y='SalePrice')
+# plt.show()
+# print('打印图片成功')
 #删除原始数据中的索引 id
 df_new2.drop(["Id"],axis=1,inplace=True)
 #计算属性间的相关系数图
